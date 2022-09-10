@@ -1,4 +1,5 @@
 var express = require('express');
+var bodyParser = require('body-parser');
 var app = express();
 // jade html코드 간단히
 app.locals.pretty = true;
@@ -6,8 +7,24 @@ app.locals.pretty = true;
 app.set('view engine', 'jade');
 app.set('views', './views');
 app.use(express.static('public'));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.get('/form', function(req, res){
+	res.render('form');
+});
+app.get('/form_receiver', function(req, res){
+	// res.send('hello, GET');
+	// var title = req.query.title;
+	// var description = req.query.description;
+	// res.send(title+','+description);
+});
+app.post('/form_receiver', function(req, res){
+	// res.send('hello, POST');
+	var title = req.body.title;
+	var description = req.body.description;
+	res.send(title+','+description);
+});
 app.get('/topic/:id', function(req, res){
-	var topics = [
+var topics = [
 		'javascript1',
 		'node2',
 		'js3'

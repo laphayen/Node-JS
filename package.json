@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/laphayen/Node-JS#readme",
   "dependencies": {
+    "body-parser": "^1.20.0",
     "express": "^4.18.1",
     "jade": "^1.11.0",
     "underscore": "^1.13.4"
