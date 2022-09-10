@@ -1,8 +1,32 @@
 var express = require('express');
 var app = express();
+// jade html코드 간단히
+app.locals.pretty = true;
+// jade 템플릿 사용
 app.set('view engine', 'jade');
 app.set('views', './views');
 app.use(express.static('public'));
+app.get('/topic/:id', function(req, res){
+	var topics = [
+		'javascript1',
+		'node2',
+		'js3'
+	];
+	var output = `
+	<a href="/topic?id=0">javascript</a><br>
+	<a href="/topic?id=1">node</a><br>
+	<a href="/topic?id=2">express</a><br>
+	${topics[req.params.id]}
+	`
+	res.send(output);
+});
+app.get('/topic/:id/:mode', function(req, res){
+	res.send(req.params.id+','+req.params.mode);
+});
+app.get('/');
+app.get('/template', function(req, res){
+	res.render('temp', {time:Date(), _title:'Jade'});
+});
 app.get('/', function(req, res){
 	res.send('Hello Home Page');
 });
