@@ -10,4 +10,4 @@
 
 // 모듈 가져오기
 var calc = require('./calc');
-console.log('모듈로 분리한 후 - calc.add : ' + calc.add(20.20));
+console.log('모듈로 분리한 후 - calc.add : ' + calc.add(20, 20));
